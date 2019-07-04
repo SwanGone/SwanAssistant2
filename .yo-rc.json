@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.swansoft"
+    },
+    "jhipsterVersion": "6.1.2",
+    "applicationType": "monolith",
+    "baseName": "swanassistant2",
+    "packageName": "com.swansoft",
+    "packageFolder": "com/swansoft",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "gradle",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NzU2MDE4ZDg2ZWYyMDJhYmU1MDBiZTdjZTliMDRkZDBhMTFlZmEzN2MyZmMzMmIyNjliYTA1ZTE3OGEzYzQ4NzExODBkODM1OTdmYzMwNGM2MWIwZjZiNGVhM2U5MTQwNjBlNGE2ZDE4Yjk2YjA2ZmJjNmRjNDdjNzM5ZmFlYzQ=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "lux",
+    "clientThemeVariant": "light",
+    "testFrameworks": ["protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false
+  }
+}
