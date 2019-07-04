@@ -1,0 +1,31 @@
+{
+    "name": "PCComment",
+    "fields": [
+        {
+            "fieldName": "content",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateAdded",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "pCCommentThread",
+            "otherEntityRelationshipName": "pCComment",
+            "relationshipName": "existsIn",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190704204437",
+    "entityTableName": "pc_comment",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

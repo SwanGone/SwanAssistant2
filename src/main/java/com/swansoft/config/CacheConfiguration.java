@@ -46,6 +46,27 @@ public class CacheConfiguration {
             createCache(cm, com.swansoft.domain.User.class.getName());
             createCache(cm, com.swansoft.domain.Authority.class.getName());
             createCache(cm, com.swansoft.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.swansoft.domain.Remarks.class.getName());
+            createCache(cm, com.swansoft.domain.GMComment.class.getName());
+            createCache(cm, com.swansoft.domain.GeneralInfo.class.getName());
+            createCache(cm, com.swansoft.domain.PCCommentThread.class.getName());
+            createCache(cm, com.swansoft.domain.PCComment.class.getName());
+            createCache(cm, com.swansoft.domain.Character.class.getName());
+            createCache(cm, com.swansoft.domain.Character.class.getName() + ".viewableBies");
+            createCache(cm, com.swansoft.domain.Backstory.class.getName());
+            createCache(cm, com.swansoft.domain.Adjective.class.getName());
+            createCache(cm, com.swansoft.domain.Adjective.class.getName() + ".viewableBies");
+            createCache(cm, com.swansoft.domain.Species.class.getName());
+            createCache(cm, com.swansoft.domain.Species.class.getName() + ".viewableBies");
+            createCache(cm, com.swansoft.domain.Occupation.class.getName());
+            createCache(cm, com.swansoft.domain.Occupation.class.getName() + ".viewableBies");
+            createCache(cm, com.swansoft.domain.PlaceOfInterest.class.getName());
+            createCache(cm, com.swansoft.domain.Planet.class.getName());
+            createCache(cm, com.swansoft.domain.Planet.class.getName() + ".viewableBies");
+            createCache(cm, com.swansoft.domain.HexSector.class.getName());
+            createCache(cm, com.swansoft.domain.HexMap.class.getName());
+            createCache(cm, com.swansoft.domain.OriginDetails.class.getName());
+            createCache(cm, com.swansoft.domain.OriginDetails.class.getName() + ".viewableBies");
             // jhipster-needle-ehcache-add-entry
         };
     }

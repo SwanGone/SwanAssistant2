@@ -1,0 +1,19 @@
+{
+    "name": "HexMap",
+    "fields": [
+        {
+            "fieldName": "seed",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190704204446",
+    "entityTableName": "hex_map",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

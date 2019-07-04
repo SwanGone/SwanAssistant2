@@ -1,0 +1,55 @@
+{
+    "name": "Backstory",
+    "fields": [
+        {
+            "fieldName": "text",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "adjective",
+            "otherEntityRelationshipName": "backstory",
+            "relationshipName": "adjective",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "species",
+            "otherEntityRelationshipName": "backstory",
+            "relationshipName": "species",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "occupation",
+            "otherEntityRelationshipName": "backstory",
+            "relationshipName": "occupation",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "planet",
+            "otherEntityRelationshipName": "backstory",
+            "relationshipName": "homeworld",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "originDetails",
+            "otherEntityRelationshipName": "backstory",
+            "relationshipName": "originDetails",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190704204439",
+    "entityTableName": "backstory",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

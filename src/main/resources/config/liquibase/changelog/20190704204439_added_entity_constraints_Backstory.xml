@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Backstory.
+    -->
+    <changeSet id="20190704204439-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="adjective_id"
+                                 baseTableName="backstory"
+                                 constraintName="fk_backstory_adjective_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="adjective"/>
+
+        <addForeignKeyConstraint baseColumnNames="species_id"
+                                 baseTableName="backstory"
+                                 constraintName="fk_backstory_species_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="species"/>
+
+        <addForeignKeyConstraint baseColumnNames="occupation_id"
+                                 baseTableName="backstory"
+                                 constraintName="fk_backstory_occupation_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="occupation"/>
+
+        <addForeignKeyConstraint baseColumnNames="homeworld_id"
+                                 baseTableName="backstory"
+                                 constraintName="fk_backstory_homeworld_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="planet"/>
+
+        <addForeignKeyConstraint baseColumnNames="origin_details_id"
+                                 baseTableName="backstory"
+                                 constraintName="fk_backstory_origin_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="origin_details"/>
+
+    </changeSet>
+</databaseChangeLog>

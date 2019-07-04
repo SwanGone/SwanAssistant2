@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity PCCommentThread.
+    -->
+    <changeSet id="20190704204436-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="exists_in_id"
+                                 baseTableName="pc_comment_thread"
+                                 constraintName="fk_pc_comment_thread_exists_in_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="remarks"/>
+
+    </changeSet>
+</databaseChangeLog>

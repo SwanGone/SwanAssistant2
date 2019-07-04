@@ -1,0 +1,39 @@
+{
+    "name": "PlaceOfInterest",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "inCirculation",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "remarks",
+            "otherEntityRelationshipName": "placeOfInterest",
+            "relationshipName": "remarks",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "planet",
+            "otherEntityRelationshipName": "placeOfInterest",
+            "relationshipName": "locatedOn",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190704204443",
+    "entityTableName": "place_of_interest",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

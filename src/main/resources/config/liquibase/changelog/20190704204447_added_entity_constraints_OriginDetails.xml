@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity OriginDetails.
+    -->
+    <changeSet id="20190704204447-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="origin_details"
+                                 constraintName="fk_origin_details_created_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="origin_details_id"
+                                 baseTableName="origin_details_viewable_by"
+                                 constraintName="fk_origin_details_viewable_by_origin_details_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="origin_details"/>
+
+        <addForeignKeyConstraint baseColumnNames="viewable_by_id"
+                                 baseTableName="origin_details_viewable_by"
+                                 constraintName="fk_origin_details_viewable_by_viewable_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
+    </changeSet>
+</databaseChangeLog>

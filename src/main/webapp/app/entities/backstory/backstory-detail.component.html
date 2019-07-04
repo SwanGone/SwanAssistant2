@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="backstory">
+            <h2><span>Backstory</span> {{backstory.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Text</span></dt>
+                <dd>
+                    <span>{{backstory.text}}</span>
+                </dd>
+                <dt><span>Adjective</span></dt>
+                <dd>
+                    <div *ngIf="backstory.adjective">
+                        <a [routerLink]="['/adjective', backstory.adjective?.id, 'view']">{{backstory.adjective?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Species</span></dt>
+                <dd>
+                    <div *ngIf="backstory.species">
+                        <a [routerLink]="['/species', backstory.species?.id, 'view']">{{backstory.species?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Occupation</span></dt>
+                <dd>
+                    <div *ngIf="backstory.occupation">
+                        <a [routerLink]="['/occupation', backstory.occupation?.id, 'view']">{{backstory.occupation?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Homeworld</span></dt>
+                <dd>
+                    <div *ngIf="backstory.homeworld">
+                        <a [routerLink]="['/planet', backstory.homeworld?.id, 'view']">{{backstory.homeworld?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Origin Details</span></dt>
+                <dd>
+                    <div *ngIf="backstory.originDetails">
+                        <a [routerLink]="['/origin-details', backstory.originDetails?.id, 'view']">{{backstory.originDetails?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/backstory', backstory.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="pCComment">
+            <h2><span>PC Comment</span> {{pCComment.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Content</span></dt>
+                <dd>
+                    <span>{{pCComment.content}}</span>
+                </dd>
+                <dt><span>Date Added</span></dt>
+                <dd>
+                    <span>{{pCComment.dateAdded}}</span>
+                </dd>
+                <dt><span>Exists In</span></dt>
+                <dd>
+                    <div *ngIf="pCComment.existsIn">
+                        <a [routerLink]="['/pc-comment-thread', pCComment.existsIn?.id, 'view']">{{pCComment.existsIn?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/pc-comment', pCComment.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

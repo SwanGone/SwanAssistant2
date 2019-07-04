@@ -1,0 +1,71 @@
+<div>
+    <h2 id="page-heading">
+        <span>Place Of Interests</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-place-of-interest" [routerLink]="['/place-of-interest/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Place Of Interest
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="placeOfInterests?.length === 0">
+        <span>No placeOfInterests found</span>
+    </div>
+    <div class="table-responsive" *ngIf="placeOfInterests?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>In Circulation</span></th>
+            <th><span>Remarks</span></th>
+            <th><span>Located On</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let placeOfInterest of placeOfInterests ;trackBy: trackId">
+                <td><a [routerLink]="['/place-of-interest', placeOfInterest.id, 'view' ]">{{placeOfInterest.id}}</a></td>
+                <td>{{placeOfInterest.name}}</td>
+                <td>{{placeOfInterest.inCirculation}}</td>
+                <td>
+                    <div *ngIf="placeOfInterest.remarks">
+                        <a [routerLink]="['../remarks', placeOfInterest.remarks?.id, 'view' ]" >{{placeOfInterest.remarks?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="placeOfInterest.locatedOn">
+                        <a [routerLink]="['../planet', placeOfInterest.locatedOn?.id, 'view' ]" >{{placeOfInterest.locatedOn?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/place-of-interest', placeOfInterest.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/place-of-interest', placeOfInterest.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'place-of-interest', { outlets: { popup: placeOfInterest.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

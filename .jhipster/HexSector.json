@@ -1,0 +1,39 @@
+{
+    "name": "HexSector",
+    "fields": [
+        {
+            "fieldName": "hexRow",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hexColumn",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "coordinates",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isMapped",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "hexMap",
+            "otherEntityRelationshipName": "hexSector",
+            "relationshipName": "locatedIn",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190704204445",
+    "entityTableName": "hex_sector",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

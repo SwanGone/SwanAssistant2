@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Planet.
+    -->
+    <changeSet id="20190704204444-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="remarks_id"
+                                 baseTableName="planet"
+                                 constraintName="fk_planet_remarks_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="remarks"/>
+
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="planet"
+                                 constraintName="fk_planet_created_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="located_in_id"
+                                 baseTableName="planet"
+                                 constraintName="fk_planet_located_in_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hex_sector"/>
+
+        <addForeignKeyConstraint baseColumnNames="planet_id"
+                                 baseTableName="planet_viewable_by"
+                                 constraintName="fk_planet_viewable_by_planet_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="planet"/>
+
+        <addForeignKeyConstraint baseColumnNames="viewable_by_id"
+                                 baseTableName="planet_viewable_by"
+                                 constraintName="fk_planet_viewable_by_viewable_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
+    </changeSet>
+</databaseChangeLog>

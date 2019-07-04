@@ -1,0 +1,59 @@
+<div>
+    <h2 id="page-heading">
+        <span>General Infos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-general-info" [routerLink]="['/general-info/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new General Info
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="generalInfos?.length === 0">
+        <span>No generalInfos found</span>
+    </div>
+    <div class="table-responsive" *ngIf="generalInfos?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Content</span></th>
+            <th><span>Date Added</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let generalInfo of generalInfos ;trackBy: trackId">
+                <td><a [routerLink]="['/general-info', generalInfo.id, 'view' ]">{{generalInfo.id}}</a></td>
+                <td>{{generalInfo.content}}</td>
+                <td>{{generalInfo.dateAdded | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/general-info', generalInfo.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/general-info', generalInfo.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'general-info', { outlets: { popup: generalInfo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

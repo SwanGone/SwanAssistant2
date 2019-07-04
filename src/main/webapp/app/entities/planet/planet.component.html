@@ -1,0 +1,85 @@
+<div>
+    <h2 id="page-heading">
+        <span>Planets</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-planet" [routerLink]="['/planet/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Planet
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="planets?.length === 0">
+        <span>No planets found</span>
+    </div>
+    <div class="table-responsive" *ngIf="planets?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>Date Added</span></th>
+            <th><span>Has Unobtainium</span></th>
+            <th><span>In Circulation</span></th>
+            <th><span>Remarks</span></th>
+            <th><span>Created By</span></th>
+            <th><span>Located In</span></th>
+            <th><span>Viewable By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let planet of planets ;trackBy: trackId">
+                <td><a [routerLink]="['/planet', planet.id, 'view' ]">{{planet.id}}</a></td>
+                <td>{{planet.name}}</td>
+                <td>{{planet.dateAdded | date:'medium'}}</td>
+                <td>{{planet.hasUnobtainium}}</td>
+                <td>{{planet.inCirculation}}</td>
+                <td>
+                    <div *ngIf="planet.remarks">
+                        <a [routerLink]="['../remarks', planet.remarks?.id, 'view' ]" >{{planet.remarks?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{planet.createdBy?.id}}
+                </td>
+                <td>
+                    <div *ngIf="planet.locatedIn">
+                        <a [routerLink]="['../hex-sector', planet.locatedIn?.id, 'view' ]" >{{planet.locatedIn?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let viewableBy of planet.viewableBies; let last = last">
+                            {{viewableBy.id}}{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/planet', planet.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/planet', planet.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'planet', { outlets: { popup: planet.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

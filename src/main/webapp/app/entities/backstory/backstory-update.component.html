@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-backstory-heading">Create or edit a Backstory</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_text">Text</label>
+                    <input type="text" class="form-control" name="text" id="field_text"
+                           formControlName="text"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_adjective">Adjective</label>
+                    <select class="form-control" id="field_adjective" name="adjective" formControlName="adjective">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="adjectiveOption.id === editForm.get('adjective').value?.id ? editForm.get('adjective').value : adjectiveOption" *ngFor="let adjectiveOption of adjectives; trackBy: trackAdjectiveById">{{adjectiveOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_species">Species</label>
+                    <select class="form-control" id="field_species" name="species" formControlName="species">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="speciesOption.id === editForm.get('species').value?.id ? editForm.get('species').value : speciesOption" *ngFor="let speciesOption of species; trackBy: trackSpeciesById">{{speciesOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_occupation">Occupation</label>
+                    <select class="form-control" id="field_occupation" name="occupation" formControlName="occupation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="occupationOption.id === editForm.get('occupation').value?.id ? editForm.get('occupation').value : occupationOption" *ngFor="let occupationOption of occupations; trackBy: trackOccupationById">{{occupationOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_homeworld">Homeworld</label>
+                    <select class="form-control" id="field_homeworld" name="homeworld" formControlName="homeworld">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="planetOption.id === editForm.get('homeworld').value?.id ? editForm.get('homeworld').value : planetOption" *ngFor="let planetOption of planets; trackBy: trackPlanetById">{{planetOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_originDetails">Origin Details</label>
+                    <select class="form-control" id="field_originDetails" name="originDetails" formControlName="originDetails">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="originDetailsOption.id === editForm.get('originDetails').value?.id ? editForm.get('originDetails').value : originDetailsOption" *ngFor="let originDetailsOption of origindetails; trackBy: trackOriginDetailsById">{{originDetailsOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

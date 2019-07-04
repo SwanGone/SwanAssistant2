@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity PlaceOfInterest.
+    -->
+    <changeSet id="20190704204443-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="remarks_id"
+                                 baseTableName="place_of_interest"
+                                 constraintName="fk_place_of_interest_remarks_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="remarks"/>
+
+        <addForeignKeyConstraint baseColumnNames="located_on_id"
+                                 baseTableName="place_of_interest"
+                                 constraintName="fk_place_of_interest_located_on_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="planet"/>
+
+    </changeSet>
+</databaseChangeLog>

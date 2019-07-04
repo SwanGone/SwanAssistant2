@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="planet">
+            <h2><span>Planet</span> {{planet.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{planet.name}}</span>
+                </dd>
+                <dt><span>Date Added</span></dt>
+                <dd>
+                    <span>{{planet.dateAdded}}</span>
+                </dd>
+                <dt><span>Has Unobtainium</span></dt>
+                <dd>
+                    <span>{{planet.hasUnobtainium}}</span>
+                </dd>
+                <dt><span>In Circulation</span></dt>
+                <dd>
+                    <span>{{planet.inCirculation}}</span>
+                </dd>
+                <dt><span>Remarks</span></dt>
+                <dd>
+                    <div *ngIf="planet.remarks">
+                        <a [routerLink]="['/remarks', planet.remarks?.id, 'view']">{{planet.remarks?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Created By</span></dt>
+                <dd>
+                    {{planet.createdBy?.id}}
+                </dd>
+                <dt><span>Located In</span></dt>
+                <dd>
+                    <div *ngIf="planet.locatedIn">
+                        <a [routerLink]="['/hex-sector', planet.locatedIn?.id, 'view']">{{planet.locatedIn?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Viewable By</span></dt>
+                <dd>
+                    <span *ngFor="let viewableBy of planet.viewableBies; let last = last">
+                        {{viewableBy.id}}{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/planet', planet.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

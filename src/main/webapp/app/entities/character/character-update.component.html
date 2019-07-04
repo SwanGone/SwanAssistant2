@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-character-heading">Create or edit a Character</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                           formControlName="name"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_inCirculation">In Circulation</label>
+                    <input type="checkbox" class="form-control" name="inCirculation" id="field_inCirculation"
+                           formControlName="inCirculation"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isMostCurrent">Is Most Current</label>
+                    <input type="checkbox" class="form-control" name="isMostCurrent" id="field_isMostCurrent"
+                           formControlName="isMostCurrent"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isPlayerCharacter">Is Player Character</label>
+                    <input type="checkbox" class="form-control" name="isPlayerCharacter" id="field_isPlayerCharacter"
+                           formControlName="isPlayerCharacter"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isDiplomat">Is Diplomat</label>
+                    <input type="checkbox" class="form-control" name="isDiplomat" id="field_isDiplomat"
+                           formControlName="isDiplomat"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_origin">Origin</label>
+                    <select class="form-control" id="field_origin" name="origin" formControlName="origin">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="backstoryOption.id === editForm.get('origin').value?.id ? editForm.get('origin').value : backstoryOption" *ngFor="let backstoryOption of origins; trackBy: trackBackstoryById">{{backstoryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_remarks">Remarks</label>
+                    <select class="form-control" id="field_remarks" name="remarks" formControlName="remarks">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="remarksOption.id === editForm.get('remarks').value?.id ? editForm.get('remarks').value : remarksOption" *ngFor="let remarksOption of remarks; trackBy: trackRemarksById">{{remarksOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_createdBy">Created By</label>
+                    <select class="form-control" id="field_createdBy" name="createdBy" formControlName="createdBy">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userOption.id === editForm.get('createdBy').value?.id ? editForm.get('createdBy').value : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_currentLocation">Current Location</label>
+                    <select class="form-control" id="field_currentLocation" name="currentLocation" formControlName="currentLocation">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="planetOption.id === editForm.get('currentLocation').value?.id ? editForm.get('currentLocation').value : planetOption" *ngFor="let planetOption of planets; trackBy: trackPlanetById">{{planetOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_viewableBies">Viewable By</label>
+                    <select class="form-control" id="field_viewableBies" multiple name="viewableBies" formControlName="viewableBies">
+                        <option [ngValue]="getSelected(editForm.get('viewableBies').value, userOption)" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="placeOfInterest">
+            <h2><span>Place Of Interest</span> {{placeOfInterest.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{placeOfInterest.name}}</span>
+                </dd>
+                <dt><span>In Circulation</span></dt>
+                <dd>
+                    <span>{{placeOfInterest.inCirculation}}</span>
+                </dd>
+                <dt><span>Remarks</span></dt>
+                <dd>
+                    <div *ngIf="placeOfInterest.remarks">
+                        <a [routerLink]="['/remarks', placeOfInterest.remarks?.id, 'view']">{{placeOfInterest.remarks?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Located On</span></dt>
+                <dd>
+                    <div *ngIf="placeOfInterest.locatedOn">
+                        <a [routerLink]="['/planet', placeOfInterest.locatedOn?.id, 'view']">{{placeOfInterest.locatedOn?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/place-of-interest', placeOfInterest.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

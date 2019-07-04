@@ -1,0 +1,36 @@
+{
+    "name": "Remarks",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "gMComment",
+            "otherEntityRelationshipName": "remarks",
+            "relationshipName": "gmComment",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "generalInfo",
+            "otherEntityRelationshipName": "remarks",
+            "relationshipName": "generalInfo",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190704204433",
+    "entityTableName": "remarks",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

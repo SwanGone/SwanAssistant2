@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="remarks">
+            <h2><span>Remarks</span> {{remarks.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Title</span></dt>
+                <dd>
+                    <span>{{remarks.title}}</span>
+                </dd>
+                <dt><span>Gm Comment</span></dt>
+                <dd>
+                    <div *ngIf="remarks.gmComment">
+                        <a [routerLink]="['/gm-comment', remarks.gmComment?.id, 'view']">{{remarks.gmComment?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>General Info</span></dt>
+                <dd>
+                    <div *ngIf="remarks.generalInfo">
+                        <a [routerLink]="['/general-info', remarks.generalInfo?.id, 'view']">{{remarks.generalInfo?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/remarks', remarks.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

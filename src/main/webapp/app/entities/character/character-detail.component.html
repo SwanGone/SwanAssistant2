@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="character">
+            <h2><span>Character</span> {{character.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{character.name}}</span>
+                </dd>
+                <dt><span>In Circulation</span></dt>
+                <dd>
+                    <span>{{character.inCirculation}}</span>
+                </dd>
+                <dt><span>Is Most Current</span></dt>
+                <dd>
+                    <span>{{character.isMostCurrent}}</span>
+                </dd>
+                <dt><span>Is Player Character</span></dt>
+                <dd>
+                    <span>{{character.isPlayerCharacter}}</span>
+                </dd>
+                <dt><span>Is Diplomat</span></dt>
+                <dd>
+                    <span>{{character.isDiplomat}}</span>
+                </dd>
+                <dt><span>Origin</span></dt>
+                <dd>
+                    <div *ngIf="character.origin">
+                        <a [routerLink]="['/backstory', character.origin?.id, 'view']">{{character.origin?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Remarks</span></dt>
+                <dd>
+                    <div *ngIf="character.remarks">
+                        <a [routerLink]="['/remarks', character.remarks?.id, 'view']">{{character.remarks?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Created By</span></dt>
+                <dd>
+                    {{character.createdBy?.id}}
+                </dd>
+                <dt><span>Current Location</span></dt>
+                <dd>
+                    <div *ngIf="character.currentLocation">
+                        <a [routerLink]="['/planet', character.currentLocation?.id, 'view']">{{character.currentLocation?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Viewable By</span></dt>
+                <dd>
+                    <span *ngFor="let viewableBy of character.viewableBies; let last = last">
+                        {{viewableBy.id}}{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/character', character.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

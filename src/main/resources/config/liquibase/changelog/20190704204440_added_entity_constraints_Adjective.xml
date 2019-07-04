@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Adjective.
+    -->
+    <changeSet id="20190704204440-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="adjective"
+                                 constraintName="fk_adjective_created_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="adjective_id"
+                                 baseTableName="adjective_viewable_by"
+                                 constraintName="fk_adjective_viewable_by_adjective_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="adjective"/>
+
+        <addForeignKeyConstraint baseColumnNames="viewable_by_id"
+                                 baseTableName="adjective_viewable_by"
+                                 constraintName="fk_adjective_viewable_by_viewable_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="hexSector">
+            <h2><span>Hex Sector</span> {{hexSector.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Hex Row</span></dt>
+                <dd>
+                    <span>{{hexSector.hexRow}}</span>
+                </dd>
+                <dt><span>Hex Column</span></dt>
+                <dd>
+                    <span>{{hexSector.hexColumn}}</span>
+                </dd>
+                <dt><span>Coordinates</span></dt>
+                <dd>
+                    <span>{{hexSector.coordinates}}</span>
+                </dd>
+                <dt><span>Is Mapped</span></dt>
+                <dd>
+                    <span>{{hexSector.isMapped}}</span>
+                </dd>
+                <dt><span>Located In</span></dt>
+                <dd>
+                    <div *ngIf="hexSector.locatedIn">
+                        <a [routerLink]="['/hex-map', hexSector.locatedIn?.id, 'view']">{{hexSector.locatedIn?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/hex-sector', hexSector.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

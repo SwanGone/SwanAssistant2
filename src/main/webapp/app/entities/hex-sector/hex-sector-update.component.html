@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-hex-sector-heading">Create or edit a Hex Sector</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!editForm.get('id').value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hexRow">Hex Row</label>
+                    <input type="text" class="form-control" name="hexRow" id="field_hexRow"
+                           formControlName="hexRow"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hexColumn">Hex Column</label>
+                    <input type="text" class="form-control" name="hexColumn" id="field_hexColumn"
+                           formControlName="hexColumn"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_coordinates">Coordinates</label>
+                    <input type="text" class="form-control" name="coordinates" id="field_coordinates"
+                           formControlName="coordinates"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_isMapped">Is Mapped</label>
+                    <input type="checkbox" class="form-control" name="isMapped" id="field_isMapped"
+                           formControlName="isMapped"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_locatedIn">Located In</label>
+                    <select class="form-control" id="field_locatedIn" name="locatedIn" formControlName="locatedIn">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="hexMapOption.id === editForm.get('locatedIn').value?.id ? editForm.get('locatedIn').value : hexMapOption" *ngFor="let hexMapOption of hexmaps; trackBy: trackHexMapById">{{hexMapOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

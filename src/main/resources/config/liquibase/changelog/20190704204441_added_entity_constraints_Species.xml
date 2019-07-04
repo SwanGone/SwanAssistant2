@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Species.
+    -->
+    <changeSet id="20190704204441-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="remarks_id"
+                                 baseTableName="species"
+                                 constraintName="fk_species_remarks_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="remarks"/>
+
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="species"
+                                 constraintName="fk_species_created_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="species_id"
+                                 baseTableName="species_viewable_by"
+                                 constraintName="fk_species_viewable_by_species_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="species"/>
+
+        <addForeignKeyConstraint baseColumnNames="viewable_by_id"
+                                 baseTableName="species_viewable_by"
+                                 constraintName="fk_species_viewable_by_viewable_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+        
+    </changeSet>
+</databaseChangeLog>

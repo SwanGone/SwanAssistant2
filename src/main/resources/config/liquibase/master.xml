@@ -14,6 +14,33 @@
     <property name="uuidType" value="uuid" dbms="h2, postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204433_added_entity_Remarks.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204434_added_entity_GMComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204435_added_entity_GeneralInfo.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204436_added_entity_PCCommentThread.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204437_added_entity_PCComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204438_added_entity_Character.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204439_added_entity_Backstory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204440_added_entity_Adjective.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204441_added_entity_Species.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204442_added_entity_Occupation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204443_added_entity_PlaceOfInterest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204444_added_entity_Planet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204445_added_entity_HexSector.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204446_added_entity_HexMap.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204447_added_entity_OriginDetails.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190704204433_added_entity_constraints_Remarks.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204436_added_entity_constraints_PCCommentThread.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204437_added_entity_constraints_PCComment.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204438_added_entity_constraints_Character.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204439_added_entity_constraints_Backstory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204440_added_entity_constraints_Adjective.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204441_added_entity_constraints_Species.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204442_added_entity_constraints_Occupation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204443_added_entity_constraints_PlaceOfInterest.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204444_added_entity_constraints_Planet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204445_added_entity_constraints_HexSector.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190704204447_added_entity_constraints_OriginDetails.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

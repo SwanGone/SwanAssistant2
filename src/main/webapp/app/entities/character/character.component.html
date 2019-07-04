@@ -1,0 +1,93 @@
+<div>
+    <h2 id="page-heading">
+        <span>Characters</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-character" [routerLink]="['/character/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Character
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="characters?.length === 0">
+        <span>No characters found</span>
+    </div>
+    <div class="table-responsive" *ngIf="characters?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Name</span></th>
+            <th><span>In Circulation</span></th>
+            <th><span>Is Most Current</span></th>
+            <th><span>Is Player Character</span></th>
+            <th><span>Is Diplomat</span></th>
+            <th><span>Origin</span></th>
+            <th><span>Remarks</span></th>
+            <th><span>Created By</span></th>
+            <th><span>Current Location</span></th>
+            <th><span>Viewable By</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let character of characters ;trackBy: trackId">
+                <td><a [routerLink]="['/character', character.id, 'view' ]">{{character.id}}</a></td>
+                <td>{{character.name}}</td>
+                <td>{{character.inCirculation}}</td>
+                <td>{{character.isMostCurrent}}</td>
+                <td>{{character.isPlayerCharacter}}</td>
+                <td>{{character.isDiplomat}}</td>
+                <td>
+                    <div *ngIf="character.origin">
+                        <a [routerLink]="['../backstory', character.origin?.id, 'view' ]" >{{character.origin?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="character.remarks">
+                        <a [routerLink]="['../remarks', character.remarks?.id, 'view' ]" >{{character.remarks?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{character.createdBy?.id}}
+                </td>
+                <td>
+                    <div *ngIf="character.currentLocation">
+                        <a [routerLink]="['../planet', character.currentLocation?.id, 'view' ]" >{{character.currentLocation?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <span *ngFor="let viewableBy of character.viewableBies; let last = last">
+                            {{viewableBy.id}}{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/character', character.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/character', character.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'character', { outlets: { popup: character.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

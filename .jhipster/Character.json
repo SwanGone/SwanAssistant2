@@ -1,0 +1,74 @@
+{
+    "name": "Character",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "inCirculation",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isMostCurrent",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isPlayerCharacter",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "isDiplomat",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "backstory",
+            "otherEntityRelationshipName": "character",
+            "relationshipName": "origin",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "remarks",
+            "otherEntityRelationshipName": "character",
+            "relationshipName": "remarks",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "character",
+            "relationshipName": "createdBy",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "planet",
+            "otherEntityRelationshipName": "character",
+            "relationshipName": "currentLocation",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "character",
+            "relationshipName": "viewableBy",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190704204438",
+    "entityTableName": "character",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

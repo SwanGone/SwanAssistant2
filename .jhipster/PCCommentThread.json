@@ -1,0 +1,31 @@
+{
+    "name": "PCCommentThread",
+    "fields": [
+        {
+            "fieldName": "headline",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "dateAdded",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "remarks",
+            "otherEntityRelationshipName": "pCCommentThread",
+            "relationshipName": "existsIn",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190704204436",
+    "entityTableName": "pc_comment_thread",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

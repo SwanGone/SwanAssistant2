@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span>Hex Sectors</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-hex-sector" [routerLink]="['/hex-sector/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Hex Sector
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="hexSectors?.length === 0">
+        <span>No hexSectors found</span>
+    </div>
+    <div class="table-responsive" *ngIf="hexSectors?.length > 0">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Hex Row</span></th>
+            <th><span>Hex Column</span></th>
+            <th><span>Coordinates</span></th>
+            <th><span>Is Mapped</span></th>
+            <th><span>Located In</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let hexSector of hexSectors ;trackBy: trackId">
+                <td><a [routerLink]="['/hex-sector', hexSector.id, 'view' ]">{{hexSector.id}}</a></td>
+                <td>{{hexSector.hexRow}}</td>
+                <td>{{hexSector.hexColumn}}</td>
+                <td>{{hexSector.coordinates}}</td>
+                <td>{{hexSector.isMapped}}</td>
+                <td>
+                    <div *ngIf="hexSector.locatedIn">
+                        <a [routerLink]="['../hex-map', hexSector.locatedIn?.id, 'view' ]" >{{hexSector.locatedIn?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/hex-sector', hexSector.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/hex-sector', hexSector.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'hex-sector', { outlets: { popup: hexSector.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
