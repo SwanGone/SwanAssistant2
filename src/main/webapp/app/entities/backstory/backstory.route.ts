@@ -11,6 +11,7 @@ import { BackstoryDetailComponent } from './backstory-detail.component';
 import { BackstoryUpdateComponent } from './backstory-update.component';
 import { BackstoryDeletePopupComponent } from './backstory-delete-dialog.component';
 import { IBackstory } from 'app/shared/model/backstory.model';
+import { BackstoryUpdateMadlibComponent } from 'app/entities/backstory/backstory-update-madlib.component';
 
 @Injectable({ providedIn: 'root' })
 export class BackstoryResolve implements Resolve<IBackstory> {
@@ -53,6 +54,18 @@ export const backstoryRoute: Routes = [
   {
     path: 'new',
     component: BackstoryUpdateComponent,
+    resolve: {
+      backstory: BackstoryResolve
+    },
+    data: {
+      authorities: ['ROLE_USER'],
+      pageTitle: 'Backstories'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'newmadlib',
+    component: BackstoryUpdateMadlibComponent,
     resolve: {
       backstory: BackstoryResolve
     },

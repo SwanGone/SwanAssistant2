@@ -8,6 +8,7 @@ import {
   BackstoryUpdateComponent,
   BackstoryDeletePopupComponent,
   BackstoryDeleteDialogComponent,
+  BackstoryUpdateMadlibComponent,
   backstoryRoute,
   backstoryPopupRoute
 } from './';
@@ -20,6 +21,7 @@ const ENTITY_STATES = [...backstoryRoute, ...backstoryPopupRoute];
     BackstoryComponent,
     BackstoryDetailComponent,
     BackstoryUpdateComponent,
+    BackstoryUpdateMadlibComponent,
     BackstoryDeleteDialogComponent,
     BackstoryDeletePopupComponent
   ],
