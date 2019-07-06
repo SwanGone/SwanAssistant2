@@ -1,4 +1,8 @@
+
+<jhi-alert-error></jhi-alert-error>
+
 <div class="container" >
+    <div class="form-group" [hidden]="!editForm.get('id').value"></div>
     <div class="row">
         <div class="col-lg-12"l>
             Hey check it out! My Space Gauntlet character is
@@ -14,8 +18,8 @@
     </div>
     <div class="row">
         <div class="button-bar">
-            <button class="btn-primary">Wow that sounds great</button>
-            <button class="btn-danger"(click)="fillTheMadlib()">God that sounds terrible</button>
+            <button class="btn-primary" (click)="save()">Wow that sounds great</button>
+            <button class="btn btn-secondary"(click)="fillTheMadlib()">God that sounds terrible</button>
         </div>
     </div>
 </div>

@@ -142,7 +142,7 @@ export class BackstoryUpdateMadlibComponent implements OnInit {
 
   save() {
     this.isSaving = true;
-    const backstory = this.createFromForm();
+    const backstory = this.createFromMadlib();
     if (backstory.id !== undefined) {
       this.subscribeToSaveResponse(this.backstoryService.update(backstory));
     } else {
@@ -150,16 +150,16 @@ export class BackstoryUpdateMadlibComponent implements OnInit {
     }
   }
 
-  private createFromForm(): IBackstory {
+  private createFromMadlib(): IBackstory {
     return {
       ...new Backstory(),
       id: this.editForm.get(['id']).value,
-      text: this.editForm.get(['text']).value,
-      adjective: this.editForm.get(['adjective']).value,
-      species: this.editForm.get(['species']).value,
-      occupation: this.editForm.get(['occupation']).value,
-      homeworld: this.editForm.get(['homeworld']).value,
-      originDetails: this.editForm.get(['originDetails']).value
+      text: this.concatenateMadlib(),
+      adjective: this.randomSelectedAdjective,
+      species: this.randomSelectedSpecies,
+      occupation: this.randomSelectedOccupation,
+      homeworld: this.randomSelectedPlanet,
+      originDetails: this.randomSelectedOriginDetail
     };
   }
 
