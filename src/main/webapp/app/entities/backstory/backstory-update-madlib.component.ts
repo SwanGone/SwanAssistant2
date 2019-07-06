@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -20,7 +20,8 @@ import { OriginDetailsService } from 'app/entities/origin-details';
 
 @Component({
   selector: 'jhi-backstory-update-madlib',
-  templateUrl: './backstory-update-madlib.component.html'
+  templateUrl: './backstory-update-madlib.component.html',
+  styleUrls: ['./backstory-update-madlib.component.scss']
 })
 export class BackstoryUpdateMadlibComponent implements OnInit {
   isSaving: boolean;
@@ -34,6 +35,12 @@ export class BackstoryUpdateMadlibComponent implements OnInit {
   planets: IPlanet[];
 
   origindetails: IOriginDetails[];
+
+  randomSelectedAdjective: IAdjective;
+  randomSelectedSpecies: ISpecies;
+  randomSelectedOccupation: IOccupation;
+  randomSelectedPlanet: IPlanet;
+  randomSelectedOriginDetail: IOriginDetails;
 
   editForm = this.fb.group({
     id: [],
@@ -99,6 +106,14 @@ export class BackstoryUpdateMadlibComponent implements OnInit {
       .subscribe((res: IOriginDetails[]) => (this.origindetails = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
+  fillTheMadlib(): void {
+    this.randomSelectedAdjective = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.adjectives);
+    this.randomSelectedSpecies = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.species);
+    this.randomSelectedOccupation = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.occupations);
+    this.randomSelectedPlanet = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.planets);
+    this.randomSelectedOriginDetail = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.origindetails);
+  }
+
   updateForm(backstory: IBackstory) {
     this.editForm.patchValue({
       id: backstory.id,
@@ -154,23 +169,75 @@ export class BackstoryUpdateMadlibComponent implements OnInit {
     this.jhiAlertService.error(errorMessage, null, null);
   }
 
-  trackAdjectiveById(index: number, item: IAdjective) {
-    return item.id;
+  static hasAVowel(item: string): boolean {
+    return (
+      item.toUpperCase().includes('A') ||
+      item.toUpperCase().includes('E') ||
+      item.toUpperCase().includes('I') ||
+      item.toUpperCase().includes('O') ||
+      item.toUpperCase().includes('U')
+    );
   }
 
-  trackSpeciesById(index: number, item: ISpecies) {
-    return item.id;
+  startsWithAVowel(item: string): boolean {
+    return BackstoryUpdateMadlibComponent.hasAVowel(item.charAt(0));
   }
 
-  trackOccupationById(index: number, item: IOccupation) {
-    return item.id;
+  static randomEntityFromArray(item: any) {
+    return item[Math.floor(Math.random() * item.length)];
   }
 
-  trackPlanetById(index: number, item: IPlanet) {
-    return item.id;
+  getRandomSelectedAdjectiveName(): string {
+    if (this.randomSelectedAdjective) {
+      return this.randomSelectedAdjective.content;
+    } else {
+      return 'ADJECTIVE';
+    }
   }
 
-  trackOriginDetailsById(index: number, item: IOriginDetails) {
-    return item.id;
+  getRandomSelectedSpeciesName(): string {
+    if (this.randomSelectedSpecies) {
+      return this.randomSelectedSpecies.name;
+    } else {
+      return 'SPECIES';
+    }
+  }
+
+  getRandomSelectedOccupationName(): string {
+    if (this.randomSelectedOccupation) {
+      return this.randomSelectedOccupation.name;
+    } else {
+      return 'OCCUPATION';
+    }
+  }
+
+  getRandomSelectedPlanetName(): string {
+    if (this.randomSelectedPlanet) {
+      return this.randomSelectedPlanet.name;
+    } else {
+      return 'PLANET';
+    }
+  }
+
+  getRandomSelectedOriginDetail(): string {
+    if (this.randomSelectedOriginDetail) {
+      return this.randomSelectedOriginDetail.content;
+    } else {
+      return 'ORIGIN DETAIL';
+    }
+  }
+
+  concatenateMadlib(): string {
+    return (
+      this.getRandomSelectedAdjectiveName().toUpperCase() +
+      ' ' +
+      this.getRandomSelectedSpeciesName().toUpperCase() +
+      ' ' +
+      this.getRandomSelectedOccupationName().toUpperCase() +
+      ' FROM ' +
+      this.getRandomSelectedPlanetName().toUpperCase() +
+      ' WHO ' +
+      this.getRandomSelectedOriginDetail().toUpperCase()
+    );
   }
 }

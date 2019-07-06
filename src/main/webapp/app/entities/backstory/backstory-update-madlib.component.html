@@ -1,3 +1,21 @@
-<p>
-  backstory-update-madlib works!
-</p>
+<div class="container" >
+    <div class="row">
+        <div class="col-lg-12"l>
+            Hey check it out! My Space Gauntlet character is
+            <div *ngIf="startsWithAVowel(concatenateMadlib()); then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>an ...</ng-template>
+            <ng-template #elseBlock>a ...</ng-template>
+        </div>
+    </div>
+    <div class="row madlib">
+        <p>
+            {{concatenateMadlib()}}
+        </p>
+    </div>
+    <div class="row">
+        <div class="button-bar">
+            <button class="btn-primary">Wow that sounds great</button>
+            <button class="btn-danger"(click)="fillTheMadlib()">God that sounds terrible</button>
+        </div>
+    </div>
+</div>
