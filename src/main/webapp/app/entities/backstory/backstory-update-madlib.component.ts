@@ -106,12 +106,22 @@ export class BackstoryUpdateMadlibComponent implements OnInit {
       .subscribe((res: IOriginDetails[]) => (this.origindetails = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
+  scrubOutNonCirculating(items: any[]): any[] {
+    let scrubbedItems: any[] = [];
+    for (let item of items) {
+      if (item.inCirculation) {
+        scrubbedItems.push(item);
+      }
+    }
+    return scrubbedItems;
+  }
+
   fillTheMadlib(): void {
-    this.randomSelectedAdjective = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.adjectives);
-    this.randomSelectedSpecies = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.species);
-    this.randomSelectedOccupation = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.occupations);
-    this.randomSelectedPlanet = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.planets);
-    this.randomSelectedOriginDetail = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.origindetails);
+    this.randomSelectedAdjective = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.scrubOutNonCirculating(this.adjectives));
+    this.randomSelectedSpecies = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.scrubOutNonCirculating(this.species));
+    this.randomSelectedOccupation = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.scrubOutNonCirculating(this.occupations));
+    this.randomSelectedPlanet = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.scrubOutNonCirculating(this.planets));
+    this.randomSelectedOriginDetail = BackstoryUpdateMadlibComponent.randomEntityFromArray(this.scrubOutNonCirculating(this.origindetails));
   }
 
   updateForm(backstory: IBackstory) {
