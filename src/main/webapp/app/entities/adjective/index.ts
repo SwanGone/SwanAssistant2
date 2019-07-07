@@ -1,5 +1,6 @@
 export * from './adjective.service';
 export * from './adjective-update.component';
+export * from './adjective-update-user.component';
 export * from './adjective-delete-dialog.component';
 export * from './adjective-detail.component';
 export * from './adjective.component';

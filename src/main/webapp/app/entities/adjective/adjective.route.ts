@@ -11,6 +11,7 @@ import { AdjectiveDetailComponent } from './adjective-detail.component';
 import { AdjectiveUpdateComponent } from './adjective-update.component';
 import { AdjectiveDeletePopupComponent } from './adjective-delete-dialog.component';
 import { IAdjective } from 'app/shared/model/adjective.model';
+import { AdjectiveUpdateUserComponent } from 'app/entities/adjective/adjective-update-user.component';
 
 @Injectable({ providedIn: 'root' })
 export class AdjectiveResolve implements Resolve<IAdjective> {
@@ -53,6 +54,18 @@ export const adjectiveRoute: Routes = [
   {
     path: 'new',
     component: AdjectiveUpdateComponent,
+    resolve: {
+      adjective: AdjectiveResolve
+    },
+    data: {
+      authorities: ['ROLE_USER'],
+      pageTitle: 'Adjectives'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'submitnew',
+    component: AdjectiveUpdateUserComponent,
     resolve: {
       adjective: AdjectiveResolve
     },

@@ -11,6 +11,7 @@ import {
   adjectiveRoute,
   adjectivePopupRoute
 } from './';
+import { AdjectiveUpdateUserComponent } from './adjective-update-user.component';
 
 const ENTITY_STATES = [...adjectiveRoute, ...adjectivePopupRoute];
 
@@ -21,7 +22,8 @@ const ENTITY_STATES = [...adjectiveRoute, ...adjectivePopupRoute];
     AdjectiveDetailComponent,
     AdjectiveUpdateComponent,
     AdjectiveDeleteDialogComponent,
-    AdjectiveDeletePopupComponent
+    AdjectiveDeletePopupComponent,
+    AdjectiveUpdateUserComponent
   ],
   entryComponents: [AdjectiveComponent, AdjectiveUpdateComponent, AdjectiveDeleteDialogComponent, AdjectiveDeletePopupComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
